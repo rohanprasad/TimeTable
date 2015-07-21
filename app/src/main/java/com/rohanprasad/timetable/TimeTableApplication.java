@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import com.activeandroid.ActiveAndroid;
 import com.rohanprasad.timetable.helper.HelperFunctions;
 
+import java.util.Calendar;
+
 /**
  * Auther: Rohan Prasad.
  * Date: 20 Jul 2015
@@ -30,6 +32,7 @@ public class TimeTableApplication extends Application {
             HelperFunctions.addSubject("UNDERSTANDING EARTHQUAKE AND HAZARDS DISASTER", "IEQ-03","Dr. __", 0);
             HelperFunctions.addSubject("INNOVATION, BUSINESS MODELS AND ENTERPRENEURSHIP", "IBM-08","Dr. __", 0);
             HelperFunctions.addSubject("ADVANCED OS", "EC-551","Dr. Rajdeep Niyogi", 0);
+            HelperFunctions.addSchedule("EC-451", 3, Calendar.getInstance().getTimeInMillis(), Calendar.getInstance().getTimeInMillis() + 1000);
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("firstRun", false);

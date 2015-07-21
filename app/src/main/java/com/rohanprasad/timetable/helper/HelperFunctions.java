@@ -7,6 +7,7 @@ import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.rohanprasad.timetable.item.ItemSubject;
+import com.rohanprasad.timetable.models.TableSchedule;
 import com.rohanprasad.timetable.models.TableSubject;
 
 import java.util.ArrayList;
@@ -85,9 +86,47 @@ public class HelperFunctions {
         dataItem.save();
     }
 
+    /**
+     * Get the shared Preference for this application.
+     * @param context
+     * @return
+     */
     public static SharedPreferences getSharedPref(Context context){
 
         return context.getSharedPreferences("Timetable",Context.MODE_PRIVATE);
+    }
+
+
+    /**
+     * Function to add item to schedule.
+     *
+     * @param subject
+     * @param day
+     * @param startTime
+     * @param endTime
+     */
+    public static void addSchedule(String subject, int day, long startTime, long endTime){
+
+        TableSchedule schedule = new TableSchedule(subject, day, startTime, endTime);
+        schedule.save();
+    }
+
+    public static ArrayList<TableSchedule> getSchedule(int day){
+
+        List<TableSchedule> schedule = new Select()
+                .from(TableSchedule.class)
+                .where("day=?", day)
+                .execute();
+
+        ArrayList<TableSchedule> schedules = new ArrayList<>();
+
+        for (int i = 0; i < schedule.size(); i++) {
+
+            TableSchedule source = schedule.get(i);
+            schedules.add(source);
+        }
+
+        return schedules;
     }
 
 }

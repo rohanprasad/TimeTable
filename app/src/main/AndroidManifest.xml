@@ -13,10 +13,11 @@
         <meta-data android:name="AA_DB_VERSION" android:value="1" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.rohanprasad.timetable.models.TableSubject" />
+            android:value="com.rohanprasad.timetable.models.TableSubject,
+            com.rohanprasad.timetable.models.TableSchedule" />
 
         <activity
-            android:name=".activity.SubjectSelectionActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
